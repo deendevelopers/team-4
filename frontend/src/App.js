@@ -4,7 +4,7 @@ import './App.css'
 import Search from './Search'
 
 export default class App extends Component {
-  onSearch(value) {
+  onSearch = (value) => {
     console.log(`Search triggered with value ${value}`)
     // make API call
   }

@@ -11,11 +11,21 @@ export default class Search extends Component {
     }
   }
 
+  handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      this.props.onSearch(this.state.value)
+    }
+  }
+
   render() {
     return (
       <div className="main-container">
         <div className="search-container">
-          <input type="text" value={this.state.value} onChange={(e) => this.setState({value: e.target.value})} />
+          <input
+            type="text"
+            value={this.state.value}
+            onKeyDown={(e) => this.handleKeyDown(e)}
+            onChange={(e) => this.setState({value: e.target.value})} />
         </div>
         <button onClick={() => this.props.onSearch(this.state.value)}>Search</button>
       </div>
