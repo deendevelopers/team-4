@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, request, jsonify
 from flask_cors import cross_origin
 
 app = Flask(__name__, static_folder="frontend/build/static", template_folder="frontend/build")
@@ -10,6 +10,8 @@ def hello():
 @app.route('/api')
 @cross_origin()
 def api():
+  search_term = request.args.get('search')
+
   data = [
     {
       'type': 'hadtih',

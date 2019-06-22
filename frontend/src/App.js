@@ -14,7 +14,7 @@ export default class App extends Component {
   onSearch = (value) => {
     console.log(`Search triggered with value ${value}`)
     // make API call
-    fetch('http://0.0.0.0:5000/api')
+    fetch(`http://0.0.0.0:5000/api?search=${value}`)
     .then((resp) => resp.json())
     .then((data)=> {
       this.setState({data: data})
