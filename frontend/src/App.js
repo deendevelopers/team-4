@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './App.css'
 
 import Search from './Search'
+import Card from './Card'
 
 export default class App extends Component {
   constructor(props) {
@@ -29,6 +30,9 @@ export default class App extends Component {
     return (
       <div className="main">
         <Search onSearch={(value) => this.onSearch(value)} />
+        {this.state.data.map((card => {
+          return <Card data={card} />
+        }))}
       </div>
     )
   }
