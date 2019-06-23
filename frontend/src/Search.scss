@@ -22,6 +22,12 @@
       }
     }
   }
+  .check-boxes {
+    margin-top: 16px;
+    > span:first-child {
+      margin-right: 8px;
+    }
+  }
   button {
     font-size: 16px;
     background-color: #f2f2f2;
