@@ -34,7 +34,7 @@ export default class Search extends Component {
 
   render() {
     return (
-      <div className="main-container">
+      <div className="search">
         <div className="search-container">
           <input
             type="text"
