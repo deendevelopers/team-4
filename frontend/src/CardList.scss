@@ -1,3 +1,13 @@
 .card-list {
   margin-top: 24px;
+  .check-boxes {
+    margin-bottom: 16px;
+    text-align: center;
+    > span {
+      margin-right: 8px;
+      > label {
+        margin-right: 2px;
+      }
+    }
+  }
 }

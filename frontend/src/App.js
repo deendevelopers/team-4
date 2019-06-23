@@ -8,13 +8,14 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      data: [],
+      type: 'both',
     }
   }
 
-  onSearch = (value, type) => {
+  onSearch = (value) => {
     console.log(`Search triggered with value ${value}`)
-    fetch(`http://0.0.0.0:5000/api?search=${value}&type=${type}`)
+    fetch(`http://0.0.0.0:5000/api?search=${value}`)
     .then((resp) => resp.json())
     .then((data)=> {
       this.setState({data: data})
@@ -25,11 +26,33 @@ export default class App extends Component {
     })
   }
 
+  onFilterChange(type) {
+    this.setState({type: type})
+  }
+
   render() {
+    console.log('App.js - this.state: ', this.state)
+
+    let data = this.state.data
+
+    if (this.state.type === 'verse') {
+      data = data.filter(card => {
+        return card.type === 'verse'
+      })
+    }
+    else if (this.state.type === 'hadith') {
+      data = data.filter(card => {
+        return card.type === 'hadith'
+      })
+    }
+
+    console.log('filtered data: ', data)
+
     return (
       <div className="main">
         <Search onSearch={(value, type) => this.onSearch(value, type)} />
-        <CardList data={this.state.data} />
+        {data.length > 0 && <CardList data={data}
+        onFilterChange={(value) => this.onFilterChange(value)}/>}
       </div>
     )
   }

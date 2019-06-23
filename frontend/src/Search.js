@@ -7,32 +7,19 @@ export default class Search extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      value:  '',
-      quran: false,
-      hadith: false,
+      value:  ''
     }
   }
 
   handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      this.onSearch()
+      this.props.onSearch(this.state.value)
     }
-  }
-
-  onSearch = () => {
-    let type = 'both'
-
-    if (this.state.quran && !this.state.hadith) {
-      type = 'quran'
-    }
-    else if (!this.state.quran && this.state.hadith) {
-      type = 'hadith'
-    }
-
-    this.props.onSearch(this.state.value, type)
   }
 
   render() {
+    console.log('this.state: ', this.state)
+
     return (
       <div className="search">
         <div className="search-container">
@@ -42,29 +29,7 @@ export default class Search extends Component {
             onKeyDown={(e) => this.handleKeyDown(e)}
             onChange={(e) => this.setState({value: e.target.value})} />
         </div>
-        <div className="check-boxes">
-          <span className="quran">
-            <label htmlFor="quran">Qur'an</label>
-            <input
-              id="quran"
-              value={this.state.quran}
-              type="checkbox"
-              onChange={() => this.setState((prevState) => {
-                return {quran: !prevState.quran}
-              })}/>
-          </span>
-          <span className="hadith">
-            <label htmlFor="hadith">Hadith</label>
-            <input
-              id="hadith"
-              value={this.state.hadith}
-              type="checkbox"
-              onChange={() => this.setState((prevState) => {
-                return {hadith: !prevState.hadith}
-              })}/>
-          </span>
-        </div>
-        <button onClick={() => this.onSearch()}>Search</button>
+        <button onClick={() => this.props.onSearch(this.state.value)}>Search</button>
       </div>
     );
   }

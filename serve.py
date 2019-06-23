@@ -11,7 +11,6 @@ def hello():
 @cross_origin()
 def api():
   search_term = request.args.get('search')
-  search_type = request.args.get('type')
 
   data = [
     {
