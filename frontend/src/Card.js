@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './Card.css'
+import './Card.scss'
 
 export default class Card extends Component {
   render() {
@@ -13,11 +13,11 @@ export default class Card extends Component {
       <div className="card-container">
         <div className="card-meta">
           {cardData && cardData.type === 'hadith' ? <span>Chapter #: {cardData.chapterNo}</span> : <span>Surah #: {cardData.surahNo}</span>}
-          {cardData && cardData.type === 'hadith' ? <span>Hadith # {cardData.hadithNo}</span> : <span>Verse # {cardData.verseNo}</span>}
+          {cardData && cardData.type === 'hadith' ? <span>Hadith #: {cardData.hadithNo}</span> : <span>Verse: # {cardData.verseNo}</span>}
         </div>
         <div className="card-text">
           <div className="card-arabic">{cardData.textAr}</div>
-          <div className="card-arabic">{cardData.textEn}</div>
+          <div className="card-english">{cardData.textEn}</div>
         </div>
       </div>
     );
