@@ -7,8 +7,6 @@ export default class Card extends Component {
   render() {
     const cardData = this.props.data
 
-    console.log('Card - cardData: ', cardData)
-
     return (
       <div className="card-container">
         <div className="card-meta">

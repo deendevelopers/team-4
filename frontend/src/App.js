@@ -12,10 +12,9 @@ export default class App extends Component {
     }
   }
 
-  onSearch = (value) => {
+  onSearch = (value, type) => {
     console.log(`Search triggered with value ${value}`)
-    // make API call
-    fetch(`http://0.0.0.0:5000/api?search=${value}`)
+    fetch(`http://0.0.0.0:5000/api?search=${value}&type=${type}`)
     .then((resp) => resp.json())
     .then((data)=> {
       this.setState({data: data})
@@ -29,7 +28,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="main">
-        <Search onSearch={(value) => this.onSearch(value)} />
+        <Search onSearch={(value, type) => this.onSearch(value, type)} />
         <CardList data={this.state.data} />
       </div>
     )
