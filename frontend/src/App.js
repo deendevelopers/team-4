@@ -50,6 +50,10 @@ export default class App extends Component {
 
     return (
       <div className="main">
+        <header>
+          <img width="100" height="100" src="https://avatars2.githubusercontent.com/u/51423584?s=200&v=4" alt=""/>
+          <h2><i>Semantic Search for Scripture</i></h2>
+        </header>
         <Search onSearch={(value, type) => this.onSearch(value, type)} />
         {data.length > 0 && <CardList data={data}
         onFilterChange={(value) => this.onFilterChange(value)}/>}
