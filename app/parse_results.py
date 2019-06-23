@@ -1,5 +1,6 @@
 
 def parse_results(df):
+    df = df.fillna('None')
     json_data = []
     for index, row in df.iterrows():
         row_type = 'hadith' if row['Surah Name'] == 'None' else 'verse'

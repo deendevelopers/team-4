@@ -18,7 +18,7 @@ def hello():
 def api():
     search_term = request.args.get('search')
     query = Query()
-    results_df = query.query_similar_perfumes(search_term)
+    results_df = query.query_similar_items(search_term)
     json_data = parse_results(results_df)
     return jsonify(json_data)
 
